@@ -1,0 +1,71 @@
+/* QUESTÃO 1 */
+
+select nome as curso, numero as turma, inicio
+from tb_curso
+inner join tb_turma on tb_curso.id = tb_turma.curso_id;
+
+
+/* Questão 2 */
+
+SELECT tb_aluno.nome, tb_turma.numero , tb_resultado.nota_obtida
+FROM tb_curso
+INNER JOIN tb_turma ON tb_turma.curso_id = tb_curso.id
+INNER JOIN tb_matricula ON tb_matricula.turma_id = tb_turma.id
+INNER JOIN tb_aluno ON tb_matricula.aluno_id = tb_aluno.cpf
+inner join tb_resultado on tb_resultado.aluno_id = tb_aluno.cpf
+
+
+/* Questão 3 */
+	
+select data, nota, nome, nota_obtida, round((nota_obtida / nota * 100),2) as porcentagem
+from tb_resultado
+inner join tb_avaliacao on tb_resultado.avaliacao_id = tb_avaliacao.id
+inner join tb_aluno on tb_resultado.aluno_id = tb_aluno.cpf
+order by data desc, nome asc;
+
+
+/* Questão 4 = 'não consegui resolver' */
+	
+SELECT tb_aluno.nome, sum(tb_resultado.nota_obtida) AS total
+from tb_curso
+inner join tb_turma on curso_id = tb_curso.id
+inner join tb_aluno  on curso_id = tb_curso.id
+inner join tb_resultado on aluno_id = tb_aluno.cpf
+WHERE tb_turma.numero = 10
+GROUP BY tb_aluno.nome;
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
